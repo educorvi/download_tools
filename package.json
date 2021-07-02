@@ -1,5 +1,5 @@
 {
-  "version": "0.1.0",
+  "version": "1.0.0",
   "license": "MIT",
   "main": "dist/index.js",
   "typings": "dist/index.d.ts",
@@ -32,9 +32,10 @@
     "trailingComma": "es5",
     "tabWidth": 4
   },
-  "name": "download_tools",
+  "name": "@educorvi/download_tools",
   "description": "Functions for downloading which are often needed in educorvi frontend applications",
   "author": "Julian Pollinger",
+  "private": false,
   "module": "dist/download_tools.esm.js",
   "size-limit": [
     {
