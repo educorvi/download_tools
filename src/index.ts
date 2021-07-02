@@ -6,7 +6,11 @@
  * @example
  * b64toBlob(base64, 'application/pdf')
  */
-export function b64toBlob(b64Data: string, contentType?: string, sliceSize = 512): Blob {
+export function b64toBlob(
+    b64Data: string,
+    contentType?: string,
+    sliceSize = 512
+): Blob {
     const byteCharacters = atob(b64Data);
     const byteArrays = [];
 
@@ -22,7 +26,7 @@ export function b64toBlob(b64Data: string, contentType?: string, sliceSize = 512
         byteArrays.push(byteArray);
     }
 
-    return new Blob(byteArrays, {type: contentType});
+    return new Blob(byteArrays, { type: contentType });
 }
 
 /**
@@ -30,7 +34,7 @@ export function b64toBlob(b64Data: string, contentType?: string, sliceSize = 512
  * @param blob The Blob that needs to be downloaded
  * @param filename The name under which the file should be saved
  */
-export function downloadBlob(blob:Blob, filename?: string):void {
+export function downloadBlob(blob: Blob, filename?: string): void {
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement('a');
     link.href = url;
@@ -38,7 +42,7 @@ export function downloadBlob(blob:Blob, filename?: string):void {
         link.setAttribute('download', filename);
     }
     document.body.appendChild(link);
-    link.click()
+    link.click();
 }
 
 interface downloadOptions {
@@ -46,12 +50,12 @@ interface downloadOptions {
      * The filename under which the file should be saved locally
      * @example 'hello_world.pdf'
      */
-    filename?: string,
+    filename?: string;
     /**
      * The content type of the file
      * @example 'application/pdf'
      */
-    contentType?: string
+    contentType?: string;
 }
 
 /**
@@ -59,6 +63,9 @@ interface downloadOptions {
  * @param base64 The base64 string
  * @param options options
  */
-export function downloadBase64(base64: string, options?: downloadOptions): void {
+export function downloadBase64(
+    base64: string,
+    options?: downloadOptions
+): void {
     downloadBlob(b64toBlob(base64, options?.contentType), options?.filename);
 }
