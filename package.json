@@ -32,7 +32,7 @@
     "trailingComma": "es5",
     "tabWidth": 4
   },
-  "name": "@educorvi/download_tools",
+  "name": "@educorvi/file_save_tools",
   "description": "Functions for downloading which are often needed in educorvi frontend applications",
   "author": "Julian Pollinger",
   "private": false,
