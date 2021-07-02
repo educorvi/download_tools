@@ -24,3 +24,41 @@ export function b64toBlob(b64Data: string, contentType?: string, sliceSize = 512
 
     return new Blob(byteArrays, {type: contentType});
 }
+
+/**
+ * Download a Blob
+ * @param blob The Blob that needs to be downloaded
+ * @param filename The name under which the file should be saved
+ */
+export function downloadBlob(blob:Blob, filename?: string):void {
+    const url = window.URL.createObjectURL(blob);
+    const link = document.createElement('a');
+    link.href = url;
+    if (filename) {
+        link.setAttribute('download', filename);
+    }
+    document.body.appendChild(link);
+    link.click()
+}
+
+interface downloadOptions {
+    /**
+     * The filename under which the file should be saved locally
+     * @example 'hello_world.pdf'
+     */
+    filename?: string,
+    /**
+     * The content type of the file
+     * @example 'application/pdf'
+     */
+    contentType?: string
+}
+
+/**
+ * Downloads a base64 file
+ * @param base64 The base64 string
+ * @param options options
+ */
+export function downloadBase64(base64: string, options?: downloadOptions): void {
+    downloadBlob(b64toBlob(base64, options?.contentType), options?.filename);
+}
