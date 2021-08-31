@@ -69,3 +69,12 @@ export function downloadBase64(
 ): void {
     downloadBlob(b64toBlob(base64, options?.contentType), options?.filename);
 }
+
+/**
+ * Creates an Object URL from b64 Data
+ * @param b64Data The b64 Data
+ * @return The Url of the blob
+ */
+export function createObjectURL(b64Data: string): string {
+    return window.URL.createObjectURL(b64toBlob(b64Data));
+}
